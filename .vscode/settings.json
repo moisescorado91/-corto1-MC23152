@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "172.19.48.1",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "pdgb_postgres",
+            "database": "postgres",
+            "username": "postgres"
+        }
+    ]
+}

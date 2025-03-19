@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: cortoNo1-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - db
+    networks:
+      - cortoNo1-network
+
+  db:
+    image: postgres:latest
+    container_name: cortoNo1-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - cortoNo1-network
+    volumes:
+      - cortoNo1-db-data:/var/lib/postgresql/data
+
+networks:
+  cortoNo1-network:
+    driver: bridge
+
+volumes:
+  cortoNo1-db-data:
